@@ -1,0 +1,36 @@
+## Useful shit
+alias reload='source ~/.zshrc'
+alias xcolors='xrdb -l ~/.Xresources'
+
+## Debian/Debian-based.  Ubuntu, Mint, Crunchbang, etc
+
+alias ainstall='sudo apt install --install-suggests'
+alias alist='sudo apt list --upgradeable'
+alias aremove='sudo apt remove'
+alias system_update='sudo apt upgrade'
+alias afind='apt search'
+alias affind='apt-file search'
+alias afupdate='sudo apt-file update'
+alias aupdate='sudo apt update'
+alias addppa='sudo add-apt-repository'
+alias orphand='sudo deborphan | xargs sudo apt-get -y remove --purge'
+alias cleanup='sudo apt-get autoclean && sudo apt-get autoremove && sudo apt-get clean && sudo apt-get remove && orphand'
+alias updatedb='updatedb'
+alias lessswap="sysctl vm.swappiness=10"
+alias moreswap="sysctl vm.swappiness=100"
+alias gweather="curl http://wttr.in/\?0\?q\?T"
+## Misc
+alias edit='vim'
+#alias irc="ssh ro@ditop"
+alias cwr3t='mosh ro@wr3tch.com'
+alias testing='echo "Testing Testing!"'
+#alias cgenua='ssh robert@'
+alias tmuxt='tmux new -s muxy'
+alias tmuxr='tmux attach -t muxy'
+alias tmuxl='tmux list-sessions'
+alias ntmux='tmux new -s '
+alias ctmux='tmux attach -t '
+alias haltsys='sudo shutdown -h now'
+alias gpsx='ps | grep'
+alias screenshots='cd ~/Pictures/Screenshots'
+alias mntmud='sshfs cos@wr3tch.com:/home/cos/CityOfSails /home/ro/Projects/mud/remote'

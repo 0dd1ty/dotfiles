@@ -1,0 +1,239 @@
+w=================================================================#
+# .bash_aliases
+# 
+# My bash aliases for ease of use of the bourne again shell
+#=================================================================#
+
+## Aliases
+
+alias reload='source ~/.bashrc'
+alias biggest='BLOCKSIZE=1048576; du -x | sort -nr | head -10'
+alias bashrc="$EDITOR ~/.bashrc"
+alias edaliases="$EDITOR ~/.bash_aliases"
+alias xcolors='xrdb -l ~/.Xresources'
+alias mountiso="sudo mount -t iso9660 -o loop"
+alias blank="sleep 1 && xset dpms force off"
+alias lesslast="less !:*"
+alias mine="sudo chown ro"
+#alias -g G="| grep"
+#alias -g L="| less"
+alias reboot='sudo reboot'
+alias znc='ssh n4cht@ragnar -p 1347'
+alias sftpwr="sftp ro@wr3tch.com"
+alias sftpra="sftp -P 1347 n4cht@ragnar"
+alias tmuxt='tmux new -s muxy'
+alias tmuxr='tmux attach -t muxy'
+alias tmuxl='tmux list-sessions'
+
+## changing dirs with just dots. 
+#alias .='cd ../'
+#alias ..='cd ../../'
+#alias ...='cd ../../../'
+#alias ....='cd ../../../../'
+
+## these are the dirs i use most commonly.
+alias home='cd ~/'
+alias documents='cd ~/Documents'
+alias downloads='cd ~/Downloads'
+alias books='cd ~/eBooks'
+alias pictures='cd ~/Pictures'
+alias packages='cd ~/Packages'
+alias torrents='cd ~/Torrents'
+alias videos='cd ~/Videos'
+alias wallpaper='cd ~/Pictures/Wallpaper'
+alias screenshots='cd ~/Pictures/Screenshots'
+alias music='cd ~/Music'
+
+## MORE aliases that i use a lot.
+alias ports='netstat -nape --inet'
+alias ping='ping -c 4'
+alias ns='netstat -alnp --protocol=inet'
+alias top="sudo htop d 1"
+alias today='date "+%d %h %y"'
+alias now='date "+%A, %d %B, %G%t%H:%M %Z(%z)"'
+alias msgs='tail -f /var/log/messages'
+alias grep="egrep --color=auto"  # color grep output
+alias cls="clear;fortune"     # another quickie
+alias k=kill                     # QUICKKEY - kill process
+alias e=$EDITOR                  # QUICKKEY - edit quickly
+alias m=more                     # QUICKKEY - yeah
+alias q=exit                     # QUICKKEY - like vim
+
+## Package Manager - Uncomment for your distro
+#  Distributions Included: Debian and Debian-based Distributions like Ubuntu and Mint
+#                          Fedora, and other Yum-based Distros like OpenSUSE and Fuduntu
+#                          Sayabon, Gentoo, Archlinux.
+
+## Debian/Debian-based.  Ubuntu, Mint, Crunchbang, etc
+
+alias ainstall='sudo apt install'
+alias aremove='sudo apt remove'
+alias system_update='sudo apt upgrade'
+alias afind='apt search'
+alias affind='sudo apt-file search'
+alias afupdate='sudo apt-file update'
+alias aupdate='sudo apt update'
+alias addppa='sudo add-apt-repository'
+alias orphand='sudo deborphan | xargs sudo apt-get -y remove --purge'
+alias cleanup='sudo apt-get autoclean && sudo apt-get autoremove && sudo apt-get clean && sudo apt-get remove && orphand'
+alias updatedb='sudo updatedb'
+alias lessswap="sudo sysctl vm.swappiness=10"
+alias moreswap="sudo sysctl vm.swappiness=100"
+
+## Fedora/Fuduntu/etc
+
+#alias yinstall='sudo yum install'
+#alias yremove='sudo yum remove'
+#alias system_update='sudo yum update'
+#alias yfind='sudo yum search'
+#alias yginstall='sudo yum groupinstall'
+
+## Sabayon
+
+#alias einstall='sudo equo install'
+#alias efind='equo search'
+#alias eremove='sudo equo remove'
+#alias eupdate='sudo equo update'
+#alias eupgrade='sudo equo upgrade --ask'
+
+## Gentoo
+
+#alias einstall='sudo emerge -a'
+#alias eremove='sudo emerge -ac'
+#alias system_update='sudo emerge -aev world'
+#alias efind='sudo emerge -S'
+#alias eupdate='sudo emerge --sync'
+#alias depclean='sudo emerge --depclean'
+
+## Archlinux
+
+#alias aurinst='sudo yaourt -S'
+#alias aurpkg='sudo pacman -U'
+#alias pinstall='sudo pacman -S'
+#alias premove='sudo pacman -R'
+#alias system_update='sudo pacman -Syu'
+#alias aurfind='sudo yaourt -Ss'
+#alias pfind='sudo pacman -Ss'
+#alias pinfo='sudo pacman -Si'
+#alias installedby='sudo pacman -Ql'
+#alias whatfrom='sudo pacman -Qo'
+#alias showorphan='sudo pacman -Qdt'
+#alias removeuseless='sudo pacman -Rsnc $(pacman -Qdqt)'
+#alias pacupgrade='sh ~/.mirrorfix'
+#alias giveswhat='sudo pkgfile --list'
+## Misc
+alias edit='vim'
+# Specific File Editing
+alias vrc="$EDITOR ~/.bashrc"
+alias vac="$EDITOR ~/.bash_aliases"
+alias vi3="$EDITOR ~/.config/i3/config"
+alias vbl="$EDITOR ~/.config/i3blocks/config"
+alias vn="$EDITOR ~/Files/Notes"
+
+# Directory Management
+alias mkd="mkdir -pv"
+alias ..="cd .. && ls -hN --color=auto"
+alias ...="cd ../../ && ls -hN --color=auto"
+alias ....="cd ../../../ && ls -hN --color=auto"
+#alias ls='ls --color=auto' # color is useful.
+#alias l='ls -lFh'  
+#alias la='ls -lAFh'   
+#alias lr='ls -tRFh'   
+#alias lt='ls -ltFh'   
+alias cp='cp -i'
+alias mv='mv -i'
+#alias mkdir='mkdir -p -v'
+#alias df='df -h'
+#alias du='du -h -c'
+#alias ls="ls -hN --color=auto"
+alias l="ls -hN --color=auto"
+alias s="ls -hN --color=auto"
+alias gt="cd ~/Downloads/torrents/ && ls -hN --color=auto"
+alias dg="cd ~/Git/ && ls -hN --color=auto"
+alias gs="cd ~/.config/scripts/ && ls -hN --color=auto"
+alias r="ranger "
+alias e="exit"
+
+# File Management
+alias x="chmod +x"
+alias v="vim "
+alias sv="sudo vim "
+alias pgrep="ps aux | grep"
+alias notes="cat ~/Documents/Notes"
+alias grep="grep --color=auto"
+
+# Terminal Programs
+alias ym="youtube-dl xic --audio-format mp3 --add-metadata "
+alias yt="youtube-dl xic --add-metadata "
+alias pingg="hostname -I && curl ipinfo.io/ip && ping -c 5 -q Google.com"
+alias xclip="xclip -selection clipboard"
+
+# Fancy commands output
+alias ls='els --els-icons=fontawesome'
+alias la='els -laH --els-icons=fontawesome'
+alias du='du -kh'
+alias df='df -kTh'
+alias grep='grep --color=auto'
+alias mkdir='mkdir --parents'
+alias free='free -h'
+alias less='less -r'
+# Load configs for bash and nvim
+alias settings='nvim -O ~/.bashrc ~/.config/nvim/init.vim'
+# Load configs for i3 and polybar
+alias settingswm='nvim -O ~/.i3/config ~/.i3/bar.sh'
+# Get current IP
+alias myip="curl http://ipecho.net/plain; echo"
+# Alias del shell
+alias h='history'
+#alias v='vi'
+alias gv='gvim'
+alias j="jobs -l"
+alias psl='ps -aux | less'
+#alias ..='cd ..'
+#alias 'cd..'='cd ..'
+#alias df="df -h"
+
+# Alias para el su (root)
+#alias reboot="sudo /sbin/reboot"
+#alias halt="sudo /sbin/poweroff"
+#alias poweroff="sudo /sbin/poweroff"
+#alias xcdroast="sudo /usr/bin/xcdroast"
+#zalias gtkam="sudo /usr/bin/gtkam"
+
+# Alias para las X
+alias xvi="terminal vim"
+alias xslrn="terminal slrn"
+alias xmutt="terminal mutt"
+alias xnetstat="terminal netstat"
+alias xnetmasq="terminal netmasq"
+alias xiptraf="terminal iptraf"
+alias xbithcx="terminal bithcx"
+alias xt="terminal"
+
+# Alias del git
+alias gia="git add"
+alias gcm="git commit -a -m"
+alias gp="git push"
+
+# Mis chuletas
+#alias chuleta="vim ~/.vim/doc/chuletario.txt"
+
+# Cambio colores de terminal
+alias col_dark="sh ~/.config/termcolours/dark.sh"
+alias col_light="sh ~/.config/termcolours/light.sh"
+alias col_default="sh ~/.config/termcolours/default.sh"
+
+# Wifi on/off
+alias wifi_on="nmcli nm wifi on"
+alias wifi_off="nmcli nm wifi off"
+
+# App varias
+alias mldonkey="mldonkey -stdout -verbosity verb"
+alias netload="speedometer -r eth0 -t eth0"
+
+# Connecting to my machines
+alias cwr3='mosh ro@wr3tch.com'
+alias crag='mosh --ssh="ssh -p 1347" n4cht@ragnar'
+
+# pbcopy replication
+alias pbcopy="xclip -sel clip"

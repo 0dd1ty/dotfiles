@@ -1,0 +1,59 @@
+music_directory     "/home/lee/Music/"
+playlist_directory   "~/.mpd/playlists"
+db_file                    "~/.mpd/mpd.db"
+#log_file		"syslog"
+pid_file                   "~/.mpd/mpd.pid"
+state_file                "~/.mpd/mpdstate"
+
+#user                                "mpd"
+#bind_to_address		"any"
+
+#input {
+#        plugin "curl"
+#}
+
+#audio_output {
+#type "alsa"
+#name "My ALSA Device"
+#format "44100:16:2"
+#}
+audio_output {
+    type        "pulse"
+    name        "My Pulse Output"
+#   server      "remote_server"     # optional
+#   sink        "remote_server_sink"    # optional
+}
+audio_output {
+type                    "fifo"
+name                    "FIFO"
+path                    "/tmp/mpd.fifo"
+format                  "44100:16:2"
+}
+audio_output {
+    type        "shout"
+    encoding    "ogg"
+    name        "wr3tched r4dio"
+    host        "192.168.1.217"
+    port        "8000"
+    mount       "/mpd.ogg"
+
+# This is the source password in icecast.xml
+    password    "Cast10RadioX!"
+
+# Set either quality or bit rate
+#   quality     "5.0"
+    bitrate     "64"
+
+    format      "44100:16:1"
+
+# Optional Parameters
+    user        "source"
+#   description "here is my long description"
+#   genre       "jazz"
+} # end of audio_output
+
+# Need this so that mpd still works if icecast is not running
+audio_output {
+    type "null"
+    name "fake out"
+}

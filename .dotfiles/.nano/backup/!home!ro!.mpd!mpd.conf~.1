@@ -1,0 +1,26 @@
+music_directory     "/home/ro/Music/"
+playlist_directory   "~/.mpd/playlists"
+db_file                    "~/.mpd/mpd.db"
+log_file		      "~/.mpd/log"
+pid_file                   "/run/mpd/mpd.pid"
+state_file                "~/.mpd/mpdstate"
+
+user                                "mpd"
+bind_to_address		"any"
+
+input {
+        plugin "curl"
+}
+
+audio_output {
+type "alsa"
+name "My ALSA Device"
+format "44100:16:2"
+}
+
+audio_output {
+type                    "fifo"
+name                    "FIFO"
+path                    "/tmp/mpd.fifo"
+format                  "44100:16:2"
+}

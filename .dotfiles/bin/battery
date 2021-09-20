@@ -1,0 +1,11 @@
+#!/bin/bash
+#
+# Muestra el % de bateria restante
+
+FBAT=/sys/class/power_supply/BAT0/capacity
+FAC=/sys/class/power_supply/BAT0/status
+
+case "$1" in
+"ac") grep AC $FAC | awk {'print $4'} ;;
+*) echo $[100*`grep -w charge $FBAT | awk {'print $3'}`/`grep -w max_charge $FBAT | awk {'print $3'}`] ;;
+esac

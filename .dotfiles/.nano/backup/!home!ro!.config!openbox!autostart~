@@ -1,0 +1,5 @@
+nitrogen --restore &
+(sleep 3s && nm-applet) &
+(sleep 3s && conky) &
+(sleep 3s && tint2) &
+(sleep 3s && dunst) &

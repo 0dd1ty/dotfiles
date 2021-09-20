@@ -1,0 +1,61 @@
+conky.config = {
+	--own_window = true,
+	--own_window_class = 'Conky',
+	--own_window_colour = 'black',
+	--own_window_transparent = true,
+	--own_window_argb_visual = true,
+	--own_window_argb_value = 140,
+	--own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+	own_window = false,
+	own_window_transparent = true,
+	own_window_type = 'desktop',
+	own_window_hints = 'undecorated',
+--own_window_type dock
+	double_buffer = true,
+	use_spacer = 'right',
+	use_xft = true,
+--font snap-7
+	font = 'sundae:size=10',
+-- xftfont DejaVu Sans Light:size=8
+	xftalpha = 0.8,
+	text_buffer_size = 2048,
+-- alignment is disabled when own_window_type is dock
+	alignment = 'bottom_middle',
+-- Gap between borders of screen and text
+-- same thing as passing -x at command line
+	gap_x = -120,
+	gap_y = -30,
+	default_bar_width = 20, default_bar_height = 6,
+	short_units = true,
+-- Minimum size of text area
+	minimum_width = 1028, minimum_height = 43,
+-- --- Colours, Sizes, Fonts & Margins --- #
+	update_interval = 1.0,
+	stippled_borders = 0,
+	border_width = 10,
+	default_color = '#d3d3d3',
+-- --- Text --- #
+	draw_outline = false,
+	draw_borders = false,
+--font -*-profont-*-*-*-11-*-*-*-*-*-*-* 
+	uppercase = false,
+	draw_shades = false,
+
+	color0 = '#a6e22e',-- Light green
+	color1 = '#beed5f',-- Lime
+	color2 = '#fd971f',-- Light Orange
+	color3 = '#ff669d',-- Pink
+	color4 = '#9e6ffe',-- Purple
+	color5 = '#00CBEE',-- Blue
+	color6 = '#6EC6D4',-- Light grey
+};
+
+conky.text = [[
+${alignc}${color1}machine${color} $nodename | \
+${color2}uptime ${color} $uptime ${color}| \
+${color4}cpu: ${color}${cpubar} ${offset 5}${cpu}%  |  \
+${color5}ram: ${color}${membar 6, 20} ${color6}${mem}${color 00CBEE}/${color}${memmax}  |  \
+${color3}root: ${color}${font}${fs_bar 6,60 /} ${color6}${fs_used /}/${color}${fs_size /}  |   \
+${color0}down: ${color}${downspeed wlan0}| \
+${color D45959}up: ${color}${color}${upspeed wlan0}|  \
+${color6}ip: ${color}${execi 3600 curl http://ipecho.net/plain} ${color6}(${addr wlan0})${color}]];

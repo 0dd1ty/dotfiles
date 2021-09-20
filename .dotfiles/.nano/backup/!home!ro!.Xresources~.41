@@ -1,0 +1,125 @@
+! special
+*.foreground:   #c5c8c6
+*.background:   #1d1f21
+*.cursorColor:  #c5c8c6
+
+! black
+*.color0:       #282a2e
+*.color8:       #373b41
+
+! red
+*.color1:       #a54242
+*.color9:       #cc6666
+
+! green
+*.color2:       #8c9440
+*.color10:      #b5bd68
+
+! yellow
+*.color3:       #de935f
+*.color11:      #f0c674
+
+! blue
+*.color4:       #5f819d
+*.color12:      #81a2be
+
+! magenta
+*.color5:       #85678f
+*.color13:      #b294bb
+
+! cyan
+*.color6:       #5e8d87
+*.color14:      #8abeb7
+
+! white
+*.color7:       #707880
+*.color15:      #c5c8c6
+
+
+! ------------------------------------------------------------------------------
+! URxvt configs
+! ------------------------------------------------------------------------------
+
+! general settings
+Xft.autohint: 1
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintfull
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
+URxvt*saveline:         15000
+URxvt*termName:         rxvt-256color
+URxvt*iso14755:         false
+
+! appearance
+
+URxvt*depth:            50
+!URxvt*background:      rgba:0000/0000/0000/AAAA
+!URxvt*background:      [100]#f5f5f5
+URxvt.underlineColor:   #81a1c1
+URxvt.highlightColor:   #81a1c1
+URxvt.throughColor:     Blue
+URxvt*cursorColor:      #d26273
+URxvt*cursorColor2:     Magenta
+URxvt*scrollBar:        false
+URxvt*scrollBar_right:  false
+URxvt*internalBorder:   0
+URxvt*externalBorder:   0
+URxvt.colorIT:      	#a3be8c
+URxvt.colorBD:      	#e5e9f0
+URxvt.colorUL:      	#81a1c1
+URxvt.geometry: 		74x12
+URxvt.internalBorder:	10
+
+! fonts
+URxvt*letterSpace: 	    		1
+URxvt.lineSpace: 				0
+!Xft.size:						8
+URxvt*font:                 	xft:Anonymice Nerd Font Mono:regular:size=8
+URxvt*imFont:               	xft:Anonymice Nerd Font Mono:regular:size=8
+URxvt*boldFont:             	xft:Anonymice Nerd Font Mono:regular:size=8
+URxvt*italicFont:           	xft:Anonymice Nerd Font Mono:italic:size=8
+URxvt*boldItalicFont:     		xft:Anonymice Nerd Font Mono:regular:size=8
+! run :.!fc-list | grep <font-name>
+
+! perl extensions
+!URxvt.perl-ext-common:  default,clipboard,url-select,keyboard-select
+!URxvt.perl-ext-common:  default,clipboard,url-select,keyboard-select,tabbed
+
+! macros for clipboard and selection
+
+!URxvt.copyCommand:      xclip -i -selection clipboard
+!URxvt.pasteCommand:     xclip -o -selection clipboard
+!URxvt.keysym.M-c:       perl:clipboard:copy
+!URxvt.keysym.M-v:       perl:clipboard:paste
+!URxvt.keysym.M-C-v:     perl:clipboard:paste_escaped
+!URxvt.keysym.M-Escape:  perl:keyboard-select:activate
+!URxvt.keysym.M-s:       perl:keyboard-select:search
+!URxvt.keysym.M-u:       perl:url-select:select_next
+!URxvt.urlLauncher:      firefox
+!URxvt.underlineURLs:    true
+!URxvt.urlButton:        1
+
+! tabbed
+!URxvt.tabbed.tabbar-fg: 4
+!URxvt.tabbed.tabbar-bg: 16
+!URxvt.tabbed.tab-fg:    15
+!URxvt.tabbed.tab-bg:    4
+!URxvt*buffered:         false          
+
+! ------------------------------------------------------------------------------
+
+! Rofi
+rofi.font: lemon 8
+rofi.padding: 10x
+rofi.line-padding: 1
+rofi.borderwidth: 1
+rofi.color-enabled: true
+rofi.hide-scrollbar: true
+rofi.separator-style: solid
+rofi.color-window: #1a1e21, #FF254F, #1a1e21
+rofi.color-normal: #1a1e21, #f5f5f5, #1a1e21, #1a1e21, #FF254F
+rofi.color-urgent: argb:00f5f5f5, #f43753, argb:00f5f5f5, argb:00f5f5f5, #FF254F
+rofi.color-active: argb:00f5f5f5, #49bbfb, argb:00f5f5f5, argb:00f5f5f5, #FF254F
+*.font:	sundae:pixelsize=10:antialias=true:autohint=true;
+*.alpha: 0.9

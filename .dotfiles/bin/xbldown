@@ -1,0 +1,5 @@
+#!/bin/bash
+
+## Created By Aditya Shakya
+
+xbacklight -dec 10 && pkill dunst && notify-send -u low ' Brightness Dec' $(blight)

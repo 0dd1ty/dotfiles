@@ -1,0 +1,14 @@
+<svg width="16" height="16.009" version="1.1" xmlns="http://www.w3.org/2000/svg">
+ <title>Gnome Symbolic Icon Theme</title>
+ <g transform="translate(-163 -508.99)" fill="#444">
+  <path d="m174.59 515a0.50219 0.50219 0 1 1-0.0937 1h-6a0.50005 0.50005 0 1 1 0-1h6a0.50005 0.50005 0 0 1 0.0937 0z" color="#000000" style="block-progression:tb;text-decoration-line:none;text-indent:0;text-transform:none"/>
+  <path d="m174.59 517a0.50219 0.50219 0 1 1-0.0937 1h-5a0.50005 0.50005 0 1 1 0-1h5a0.50005 0.50005 0 0 1 0.0937 0z" color="#000000" style="block-progression:tb;text-decoration-line:none;text-indent:0;text-transform:none"/>
+  <path d="m174.59 519a0.50219 0.50219 0 1 1-0.0937 1h-6a0.50005 0.50005 0 1 1 0-1h6a0.50005 0.50005 0 0 1 0.0937 0z" color="#000000" style="block-progression:tb;text-decoration-line:none;text-indent:0;text-transform:none"/>
+  <path d="m174.59 521a0.50219 0.50219 0 1 1-0.0937 1h-3a0.50005 0.50005 0 1 1 0-1h3a0.50005 0.50005 0 0 1 0.0937 0z" color="#000000" style="block-progression:tb;text-decoration-line:none;text-indent:0;text-transform:none"/>
+  <path d="m176 510c1.0907 0 2 0.9093 2 2v11c0 1.0907-0.9093 2-2 2h-9c-1.0907 0-2-0.9093-2-2v-11c0-1.0907 0.9093-2 2-2v13h9v-13z" color="#000000" enable-background="new" style="block-progression:tb;text-decoration-line:none;text-indent:0;text-transform:none"/>
+  <path d="m174.59 509a0.50005 0.50005 0 0 1 0.40625 0.5v3a0.50005 0.50005 0 1 1-1 0v-3a0.50005 0.50005 0 0 1 0.59375-0.5z" color="#000000" style="block-progression:tb;text-decoration-line:none;text-indent:0;text-transform:none"/>
+  <path d="m172.59 509a0.50005 0.50005 0 0 1 0.40625 0.5v3a0.50005 0.50005 0 1 1-1 0v-3a0.50005 0.50005 0 0 1 0.59375-0.5z" color="#000000" style="block-progression:tb;text-decoration-line:none;text-indent:0;text-transform:none"/>
+  <path d="m170.59 509a0.50005 0.50005 0 0 1 0.40625 0.5v3a0.50005 0.50005 0 1 1-1 0v-3a0.50005 0.50005 0 0 1 0.59375-0.5z" color="#000000" style="block-progression:tb;text-decoration-line:none;text-indent:0;text-transform:none"/>
+  <path d="m168.59 509a0.50005 0.50005 0 0 1 0.40625 0.5v3a0.50005 0.50005 0 1 1-1 0v-3a0.50005 0.50005 0 0 1 0.59375-0.5z" color="#000000" style="block-progression:tb;text-decoration-line:none;text-indent:0;text-transform:none"/>
+ </g>
+</svg>

@@ -1,0 +1,570 @@
+;-------------------------------------------------------------------------------;
+;                               V A R I A B L E S                               ;
+;-------------------------------------------------------------------------------;
+[colors]
+background = #2f343f
+foreground = #f8f8f2
+foreground-alt = #f5f5f5
+primary = #BF616A
+secondary = #8be9fd
+white = #fff
+red = #f00
+black = #2f333f
+#blue = #02adff
+blue = #BF616A
+#violet = #8e1eff
+violet = #DA4453
+;-------------------------------------------------------------------------------;
+;                                   B A R S                                     ;
+;-------------------------------------------------------------------------------;
+[bar/top]
+width = 100%
+height = 17
+fixed-center = false
+
+background = ${colors.background}
+foreground = ${colors.white}
+font-0 = DejaVuSansMono Nerd Font:pixelsize=8;3
+#font-1 = sundae:pixelsize=8;3
+font-1 = NotoSans Symbols2:pixelsize=10;3
+font-2 = lemon:pixelsize=8;3
+font-3 = Weather Icons:scale=6;3
+
+modules-left = workspaces arrowi3
+modules-center =
+modules-right =  arrowtitle title gap weathericon gap weathertemp arrowvolume volume arrowcpu cpu arrowmemory memory arrowdate date
+
+
+[bar/bottom]
+width = 100%
+height = 17
+fixed-center = true
+bottom = true
+
+background = ${colors.background}
+foreground = ${colors.white}
+font-0 = DejaVuSansMono Nerd Font:pixelsize=8;3
+#font-1 = sundae:pixelsize=8;3
+font-1 = NotoSans Symbols2:pixelsize=10;3
+font-2 = lemon:pixelsize=8;3
+font-3 = Weather Icons:scale=8;3
+
+modules-left = filesystem gap temperature
+modules-center = mpd
+modules-right = wlan gap backlight-acpi
+
+tray-position = right
+tray-background = ${colors.background}
+tray-padding = 1
+;-------------------------------------------------------------------------------;
+;                           D E C O R A T I O N S                               ;
+;-------------------------------------------------------------------------------;
+[module/arrowi3]
+type = custom/text
+content = ""
+content-font = 2
+content-foreground = ${colors.blue}
+content-background = ${colors.background}
+
+[module/arrowtitle]
+type = custom/text
+content = " "
+content-font = 2
+content-foreground = ${colors.black}
+content-background = ${colors.background}
+
+[module/arrowkeyboard]
+; grey to bg
+type = custom/text
+content = " "
+content-font = 2
+content-foreground = ${colors.violet}
+content-background = ${colors.black}
+
+[module/arrowvolume]
+type = custom/text
+content = " "
+content-font = 2
+content-foreground = #b2616a
+content-background = ${colors.black}
+
+[module/arrowcpu]
+; grey to bg
+type = custom/text
+content = ""
+content-font = 2
+content-foreground = #B2516a
+content-background = #B2616A
+
+[module/arrowmemory]
+; bg to grey
+type = custom/text
+content = " "
+content-font = 2
+content-foreground = #B2415a
+content-background = #B2516A
+
+[module/arrowdate]
+; grey to bg
+type = custom/text
+content = " "
+content-font = 2
+content-foreground = #B2316a
+content-background = #B2416A
+
+[module/gap]
+type = custom/text
+content = " "
+content-font = 3
+content-foreground = #2f343f
+content-background = #2f343f
+;-------------------------------------------------------------------------------;
+;                               M O D U L E S                                   ;
+;-------------------------------------------------------------------------------;
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+format-prefix = " "
+format-prefix-font = 1
+format-prefix-foreground = ${colors.white}
+format-prefix-background = ${colors.violet}
+
+label-layout = %layout%
+label-layout-font = 3
+label-layout-foreground = ${colors.white}
+label-layout-background = ${colors.violet}
+
+label-indicator-background = ${colors.violet}
+; label-indicator-underline = ${colors.blue}
+
+[module/i3index]
+type = internal/i3
+format = <label-state>
+
+label-focused = "%name%"
+label-focused-foreground = ${colors.background}
+
+label-visible = "%name%"
+label-visible-foreground = ${colors.background}
+
+[module/i3]
+type = internal/i3
+format = <label-state><label-mode>
+
+index-sort = false
+enable-click = true
+enable-scroll = false
+ws-icon-0 = 10;0[]
+ws-icon-1 = 1;1 
+ws-icon-2 = 2;2 
+ws-icon-3 = 3;3 
+ws-icon-4 = 4;4 
+ws-icon-5 = 5;5 
+ws-icon-6 = 6;6 
+ws-icon-7 = 7;7 
+ws-icon-8 = 8;8 
+ws-icon-9 = 9;9 
+ws-icon-default =
+
+pin-workspaces = true ; Only show workspaces on the same output as the bar
+
+label-mode = " %mode% "
+label-mode-background = ${colors.black}
+
+label-focused = %{F#BF616A B#2f333f}%{F-} %icon% %{B#BF616A F#2f333f}%{F-}
+label-focused-foreground = ${colors.white}
+label-focused-background = ${colors.black}
+
+label-visible = " %icon% "
+label-visible-foreground = ${colors.white}
+label-visible-background = ${colors.black}
+
+label-unfocused = " %icon% "
+label-unfocused-foreground = ${colors.black}
+label-unfocused-background = ${colors.blue}
+
+label-urgent = " %icon% "
+label-urgent-foreground = ${colors.red}
+label-urgent-background = ${colors.blue}
+
+label-separator-padding = 0
+label-separator-foreground = ${colors.red}
+label-separator-background = ${colors.background}
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = "  "
+format-prefix-foreground = ${colors.black}
+format-prefix-background = #B2516A
+label = %percentage%%
+label-foreground = ${colors.black}
+label-background = #B2516A
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = "  "
+format-prefix-foreground = ${colors.black}
+format-prefix-background = #B2416A
+label = %gb_used%
+label-foreground = ${colors.black}
+label-background = #B2416A
+
+[module/date]
+type = internal/date
+interval = 1
+
+date = "  %d.%m.%y"
+time= "%I:%M:%S "
+
+label = %date% %time%
+label-foreground = ${colors.black}
+label-background = #B2316A
+
+[module/volume]
+type = internal/volume
+
+; mapping = true
+format-volume = <ramp-volume><label-volume>
+
+label-volume = "%percentage%% "
+label-volume-foreground = ${colors.black}
+label-volume-background = #B2616A
+label-muted = " 🔇 "
+label-muted-foreground = ${colors.black}
+label-muted-background = #B2616A
+
+ramp-volume-0 = " 🔈 "
+ramp-volume-0-foreground = ${colors.black}
+ramp-volume-0-background = #B2616A
+ramp-volume-1 = " 🔈 "
+ramp-volume-1-foreground = ${colors.black}
+ramp-volume-1-background = #B2616A
+ramp-volume-2 = " 🔉 "
+ramp-volume-2-foreground = ${colors.black}
+ramp-volume-2-background = #B2616A
+ramp-volume-3 = " 🔊 "
+ramp-volume-3-foreground = ${colors.red}
+ramp-volume-3-background = #B2616A
+
+[settings]
+screenchange-reload = true
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+[module/title]
+type = internal/xwindow
+format = <label>
+format-font = 3
+format-background = ${colors.black}
+format-foreground = ${colors.white}
+format-padding = 1
+label = %title%
+label-maxlen = 60
+
+[module/weathericon]
+type=custom/script
+exec = ~/.scripts/justicon.sh
+interval = 300
+label-font = 4
+
+[module/weathertemp]
+type=custom/script
+exec = ~/.scripts/justtemp.sh
+interval = 300
+label-font = 3
+
+
+[module/mpd]
+type = internal/mpd
+format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
+
+icon-prev = 
+icon-stop = 
+icon-play = 
+icon-pause = 
+icon-next = 
+
+label-song-maxlen = 25
+label-song-ellipsis = true
+label-font = 3
+
+;[module/xbacklight]
+;type = internal/xbacklight
+;
+;format = <label> <bar>
+;label = BL
+;label-font = 3
+;enable-scroll = false
+;bar-width = 10
+;bar-indicator = |
+;bar-indicator-foreground = #fff
+;bar-indicator-font = 2
+;bar-fill = ─
+;bar-fill-font = 2
+;bar-fill-foreground = #9f78e1
+;bar-empty = ─
+;bar-empty-font = 2
+;bar-empty-foreground = ${colors.foreground-alt}
+;
+[module/xbacklight]
+type = internal/xbacklight
+
+format = <label> <bar>
+label = BL
+label-font = 3
+enable-scroll = false
+bar-width = 10
+bar-indicator =
+bar-indicator-foreground = ${colors.foreground}
+bar-indicator-font = 2
+;bar-fill = ─
+bar-fill = ━
+bar-foreground-0 = ${colors.primary}
+bar-foreground-1 = ${colors.primary}
+bar-foreground-2 = ${colors.primary}
+bar-foreground-3 = ${colors.primary}
+bar-foreground-4 = ${colors.primary}
+bar-foreground-5 = ${colors.primary}
+bar-foreground-6 = ${colors.primary}
+bar-foreground-7 = ${colors.primary}
+bar-foreground-8 = ${colors.primary}
+bar-foreground-9 = ${colors.primary}
+;bar-foreground-0 = ${colors.primary}
+;bar-foreground-6 = ${colors.primary}
+;bar-foreground-7 = %{F#0a81f5}
+;bar-foreground-8 = %{F#0a81f5}
+bar-fill-font = 3
+bar-fill-foreground = #9f78e1
+
+bar-empty = ┉
+bar-empty-foreground = ${colors.foreground-alt}
+bar-empty-font = 3
+
+;bar-empty = ─
+;bar-empty-font = 2
+;bar-empty-foreground = ${colors.foreground-alt}
+
+[module/backlight-acpi]
+inherit = module/xbacklight
+type = internal/backlight
+card = intel_backlight
+
+[module/filesystem]
+type = internal/fs
+
+; Mountpoints to display
+mount-0 = /
+;;mount-1 = /home
+;;mount-2 = /var
+
+; Seconds to sleep between updates
+; Default: 30
+interval = 10
+
+; Display fixed precision values
+; Default: false
+fixed-values = false
+
+; Spacing between entries
+; Default: 2
+;;spacing = 4
+
+; Available tags:
+;   <label-mounted> (default)
+;   <bar-free>
+;   <bar-used>
+;   <ramp-capacity>
+format-mounted = <bar-used> <label-mounted>
+format-mounted-prefix = " "
+
+; Available tags:
+;   <label-unmounted> (default)
+;;format-unmounted = <label-unmounted>
+;;format-unmounted-prefix = 
+
+; Available tokens:
+;   %mountpoint%
+;   %type%
+;   %fsname%
+;   %percentage_free%
+;   %percentage_used%
+;   %total%
+;   %free%
+;   %used%
+; Default: %mountpoint% %percentage_free%%
+label-mounted = %used%/%total%
+label-font = 3
+; Available tokens:
+;   %mountpoint%
+; Default: %mountpoint% is not mounted
+;;label-unmounted = %mountpoint%: not mounted
+
+; Only applies if <bar-used> is used
+bar-used-width = 10
+bar-used-gradient = false
+
+bar-used-indicator =
+bar-used-indicator-foreground = ${colors.foreground}
+bar-used-indicator-font = 3
+
+bar-used-fill = ━
+bar-used-foreground-0 = ${colors.primary}
+bar-used-foreground-1 = ${colors.primary}
+bar-used-foreground-2 = ${colors.primary}
+bar-used-foreground-3 = ${colors.primary}
+bar-used-foreground-4 = ${colors.primary}
+bar-used-foreground-5 = ${colors.secondary}
+bar-used-foreground-6 = ${colors.secondary}
+bar-used-foreground-7 = %{F#0a81f5}
+bar-used-foreground-8 = %{F#0a81f5}
+bar-used-fill-font = 3
+
+bar-used-empty = ┉
+bar-used-empty-foreground = ${colors.foreground-alt}
+bar-used-empty-font = 3
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+;[module/filesystem]
+;type = internal/fs
+;interval = 25
+
+;mount-0 = /
+;format-prefix = 
+;format-prefix-foreground = ${colors.foreground-alt}
+;format-underline = ${colors.primary}
+;label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
+;label-unmounted = %mountpoint% not mounted
+;label-unmounted-foreground = ${colors.foreground-alt}
+
+;label-mounted-underline = ${colors.secondary}
+;label-unmounted-underline = ${colors.secondary}
+
+[module/wlan]
+type = internal/network
+interface = wlp3s0
+interval = 3.0
+
+format-connected = <ramp-signal> <label-connected>
+format-connected-underline = #9f78e1
+label-connected = %essid%
+
+;format-disconnected =
+format-disconnected = <label-disconnected>
+format-disconnected-underline = ${self.format-connected-underline}
+label-disconnected = %ifname% disconnected
+label-disconnected-foreground = ${colors.foreground-alt}
+label-font = 3
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+ramp-signal-foreground = ${colors.foreground-alt}
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 60
+
+format = <ramp> <label>
+format-underline = ${colors.secondary}
+format-warn = <ramp> <label-warn>
+format-warn-underline = ${self.format-underline}
+
+label = %temperature-c%
+label-warn = %temperature-c%
+label-warn-foreground = ${colors.secondary}
+label-font = 3
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-foreground = ${colors.foreground-alt}
+
+[module/workspaces]
+type = internal/xworkspaces
+
+; Only show workspaces defined on the same output as the bar
+;
+; Useful if you want to show monitor specific workspaces
+; on different bars
+;
+; Default: false
+pin-workspaces = true
+
+; Create click handler used to focus desktop
+; Default: true
+enable-click = true
+
+; Create scroll handlers used to cycle desktops
+; Default: true
+enable-scroll = true
+
+; icon-[0-9]+ = <desktop-name>;<icon>
+; NOTE: The desktop name needs to match the name configured by the WM
+; You can get a list of the defined desktops using:
+; $ xprop -root _NET_DESKTOP_NAMES
+icon-0 = TTY;
+icon-1 = WEB;
+icon-2 = LAB;
+icon-3 = MED;
+;icon-4 = 5;
+icon-default = 
+
+; Available tags:
+;   <label-monitor>
+;   <label-state> - gets replaced with <label-(active|urgent|occupied|empty)>
+; Default: <label-state>
+format = <label-state>
+format-padding = 0
+
+; Available tokens:
+;   %name%
+; Default: %name%
+label-monitor = %name%
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+label-active = %icon%
+label-active-foreground = ${colors.foreground}
+label-active-background = ${colors.background}
+label-active-overline = ${colors.foreground}
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+label-occupied = %icon%
+label-occupied-underline = ${colors.foreground}
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+label-urgent = %icon%
+label-urgent-foreground = ${colors.red}
+label-urgent-background = ${colors.background}
+;;label-urgent-underline = ${colors.red}
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+label-empty = %icon%
+label-empty-foreground = ${colors.foreground}
+
+label-active-padding = 2
+label-urgent-padding = 2
+label-occupied-padding = 2
+label-empty-padding = 2

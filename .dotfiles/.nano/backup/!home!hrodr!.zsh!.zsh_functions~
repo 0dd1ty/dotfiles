@@ -1,0 +1,95 @@
+# Show all 256 colors with color number
+function spectrum_ls() {
+  for code in {000..255}; do
+    print -P -- "$code: %F{$code}Text%{$reset_color%}"
+  done
+}
+
+# Helper function, simply prints current cursor position
+function get_cursor_pos() {
+    echo -ne "\033[6n"
+    read -s -d\[ garbage
+    read -s -d R pos
+}
+
+# Function for getting the number of stripped dirs in the prompt
+function get_stripped_dir_count() {
+	COUNT=$(echo $PWD | grep -o "/" | wc -l)
+	SUB=$1
+	RES=$(($COUNT - $SUB))
+	echo $RES
+	unset COUNT
+	unset SUB
+	unset RES
+}
+
+# Function to parse the number of background processes
+function bg_process() {
+	NUM_BG=$(jobs -l | grep "\[[0-9]\+\]" | wc -l)
+	if [ ! "$NUM_BG" -eq "0" ]; then
+		echo "[bg: $NUM_BG]"
+	fi
+	unset NUM_BG
+}
+
+# Git
+
+parse_git_branch() {
+# Show Git branch/tag, or name-rev if on detached head
+( git symbolic-ref -q HEAD || git name-rev --name-only --no-undefined --always HEAD ) 2> /dev/null
+}
+
+parse_git_state() {
+  # Show different symbols as appropriate for various Git repository states
+  # Compose this value via multiple conditional appends.
+  local GIT_STATE=""
+  local NUM_AHEAD="$(git log --oneline @{u}.. 2> /dev/null | wc -l | tr -d ' ')"
+  if [ "$NUM_AHEAD" -gt 0 ]; then
+    GIT_STATE=$GIT_STATE${GIT_PROMPT_AHEAD//NUM/$NUM_AHEAD}
+  fi
+  local NUM_BEHIND="$(git log --oneline ..@{u} 2> /dev/null | wc -l | tr -d ' ')"
+  if [ "$NUM_BEHIND" -gt 0 ]; then
+    GIT_STATE=$GIT_STATE${GIT_PROMPT_BEHIND//NUM/$NUM_BEHIND}
+  fi
+  local GIT_DIR="$(git rev-parse --git-dir 2> /dev/null)"
+  if [ -n $GIT_DIR ] && test -r $GIT_DIR/MERGE_HEAD; then
+    GIT_STATE=$GIT_STATE$GIT_PROMPT_MERGING
+  fi
+  if [[ -n $(git ls-files --other --exclude-standard 2> /dev/null) ]]; then
+    GIT_STATE=$GIT_STATE$GIT_PROMPT_UNTRACKED
+  fi
+  if ! git diff --quiet 2> /dev/null; then
+    GIT_STATE=$GIT_STATE$GIT_PROMPT_MODIFIED
+  fi
+  if ! git diff --cached --quiet 2> /dev/null; then
+    GIT_STATE=$GIT_STATE$GIT_PROMPT_STAGED
+  fi
+  if [[ -n $GIT_STATE ]]; then
+    echo "$GIT_PROMPT_PREFIX$GIT_STATE$GIT_PROMPT_SUFFIX"
+  fi
+}
+
+git_prompt_string() {
+  local git_where="$(parse_git_branch)"
+  
+  # If inside a Git repository, print its branch and state
+  [ -n "$git_where" ] && echo "$GIT_PROMPT_SYMBOL$(parse_git_state)$GIT_PROMPT_PREFIX%{$fg[green]%}${git_where#(refs/heads/|tags/)}$GIT_PROMPT_SUFFIX"
+  
+  # If not inside the Git repo, do nothing
+  [ ! -n "$git_where" ] && echo ""
+}
+
+n()
+{
+    # The default behaviour is to cd on quit (nnn checks if NNN_TMPFILE is set)
+    # To cd on quit only on ^G, export NNN_TMPFILE after the call to nnn
+
+    nnn "$@"
+
+    export NNN_TMPFILE=${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd
+
+    if [ -f $NNN_TMPFILE ]; then
+            . $NNN_TMPFILE
+            rm $NNN_TMPFILE
+    fi
+}

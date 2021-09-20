@@ -1,0 +1,150 @@
+!! Colours - TN_Blue
+! special
+*.foreground:   #ffffff
+*.background:   #262934
+*.cursorColor:  #ffffff
+
+! black
+*.color0:       #000000
+*.color8:       #555753
+
+! red
+*.color1:       #fb4343
+*.color9:       #fc7979
+
+! green
+*.color2:       #4e9a06
+*.color10:      #8fe811
+
+! yellow
+*.color3:       #c4a000
+*.color11:      #fce94f
+
+! blue
+*.color4:       #afd2ff
+*.color12:      #7baee3
+
+! magenta
+*.color5:       #85678f
+*.color13:      #ec76ff
+
+! cyan
+*.color6:       #08c5c7
+*.color14:      #74eeee
+
+! white
+*.color7:       #d3d7cf
+*.color15:      #eeeeec
+
+
+! ------------------------------------------------------------------------------
+! URxvt configs
+! ------------------------------------------------------------------------------
+
+! general settings
+Xft.autohint: 1
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintfull
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
+!URxvt*saveline:         15000
+URxvt*termName:         rxvt-256color
+URxvt*iso14755:         false
+
+! appearance
+
+URxvt*depth:            50
+!URxvt*background:      rgba:0000/0000/0000/AAAA
+!URxvt*background:      [100]#f5f5f5
+URxvt.underlineColor:   #81a1c1
+URxvt.highlightColor:   #81a1c1
+URxvt.throughColor:     Blue
+URxvt*cursorColor:      #d26273
+URxvt*cursorColor2:     Magenta
+!URxvt*scrollBar:        false
+!URxvt*scrollBar_right:  false
+!URxvt*internalBorder:   0
+URxvt*externalBorder:   0
+URxvt.colorIT:      	#a3be8c
+URxvt.colorBD:      	#e5e9f0
+URxvt.colorUL:      	#81a1c1
+!URxvt.geometry: 		74x12
+!URxvt.internalBorder:	10
+!! URxvt Appearance
+URxvt.font: -*-rissole-*
+URxvt.boldFont: -*-rissole-*
+URxvt.italicFont: -*-rissole-*
+URxvt.boldItalicfont: -*-rissole-*
+URxvt.letterSpace: 0
+URxvt.lineSpace: 0
+URxvt.geometry: 92x24
+URxvt.internalBorder: 24
+URxvt.cursorBlink: true
+URxvt.cursorUnderline: false
+URxvt.saveline: 2048
+URxvt.scrollBar: false
+URxvt.scrollBar_right: false
+URxvt.urgentOnBell: true
+URxvt.depth: 24
+! fonts
+!URxvt*letterSpace: 	    		1
+!URxvt.lineSpace: 				0
+!Xft.size:						8
+!URxvt*font:                 	xft:sundae:regular:size=8
+!URxvt*imFont:               	xft:sundae:regular:size=8
+!URxvt*boldFont:             	xft:sundae:regular:size=8
+!URxvt*italicFont:           	xft:sundae:italic:size=8
+!URxvt*boldItalicFont:     		xft:sundae:regular:size=8
+! run :.!fc-list | grep <font-name>
+
+! perl extensions
+!URxvt.perl-ext-common:  default,clipboard,url-select,keyboard-select
+URxvt.perl-ext-common:  default,clipboard,url-select,keyboard-select,tabbedex,confirm-paste
+
+! macros for clipboard and selection
+
+URxvt.copyCommand:      xclip -i -selection clipboard
+URxvt.pasteCommand:     xclip -o -selection clipboard
+URxvt.keysym.M-c:       perl:clipboard:copy
+URxvt.keysym.M-v:       perl:clipboard:paste
+URxvt.keysym.M-C-v:     perl:clipboard:paste_escaped
+URxvt.keysym.M-Escape:  perl:keyboard-select:activate
+URxvt.keysym.M-s:       perl:keyboard-select:search
+URxvt.keysym.M-u:       perl:url-select:select_next
+URxvt.urlLauncher:      google-chrome-stable
+URxvt.underlineURLs:    true
+URxvt.urlButton:        1
+!URxvt.kuake.hotkey: F10
+! tabbed
+URxvt.tabbedex.tabbar-fg: 4
+URxvt.tabbedex.tabbar-bg: 16
+URxvt.tabbedex.tab-fg:    15
+URxvt.tabbedex.tab-bg:    4
+URxvt*buffered:         false          
+
+! ------------------------------------------------------------------------------
+!
+! Rofi
+!
+!-------------------------------------------------------------------------------
+rofi.font: sundae 10
+rofi.padding: 10x
+rofi.line-padding: 1
+rofi.borderwidth: 1
+rofi.color-enabled: true
+rofi.hide-scrollbar: true
+rofi.separator-style: solid
+rofi.color-window: #1a1e21, #FF254F, #1a1e21
+rofi.color-normal: #1a1e21, #f5f5f5, #1a1e21, #1a1e21, #FF254F
+rofi.color-urgent: argb:00f5f5f5, #f43753, argb:00f5f5f5, argb:00f5f5f5, #FF254F
+rofi.color-active: argb:00f5f5f5, #49bbfb, argb:00f5f5f5, argb:00f5f5f5, #FF254F
+*.font:	sundae:pixelsize=10:antialias=true:autohint=true;
+*.alpha: 0.9
+!-------------------------------------------------------------------------------
+!
+! YeahConsole
+!
+!-------------------------------------------------------------------------------
+yeahconsole*term:terminator
+yeahconsole*toggleKey:ControlAlt+t

@@ -1,0 +1,17 @@
+! /----------------------------------\
+! | synthwave                        |
+! | originally based on dkegs urban  |
+! | https://fsociety.info 2016       |
+! \----------------------------------/
+
+#define bg    [97]#060606
+#define blk   #5b4041
+#define fg    #cfa696
+#define bblk  #5b4041
+#define red   #b43030
+#define grn   #7a833d
+#define ylw   #ab7438
+#define blu   #475971
+#define mag   #694255
+#define cyn   #3e6868
+#define wht   #cfa696

@@ -1,0 +1,175 @@
+/*
+ * Do not remove the @namespace line -- it's required for correct functioning
+ */
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"); /* set default namespace to XUL */
+
+window, page, dialog, wizard {
+	color: -moz-DialogText;
+	font: "SF Pro Text" !important;
+}
+
+:root {
+    --focus-ring-box-shadow: 0 !important;
+}
+
+:root:-moz-lwtheme-darktext {
+    --url-and-searchbar-background-color: #fff;
+    --chrome-background-color: #E3E4E6;
+    --chrome-color: #18191a;
+    --chrome-secondary-background-color: #F2F2F2 !important;
+    --toolbox-border-bottom-color: #cccccc;
+    --chrome-nav-buttons-background: #ffffff;
+    --chrome-nav-buttons-hover-background: #E4E4E4 !important;
+    --chrome-nav-bar-controls-border-color: #ccc;
+    --chrome-selection-color: #000000 !important;
+    --chrome-selection-background-color: #B3D8FD !important;
+    --chrome-color: black；
+    --toolbox-border-bottom-color: #E2E2E2;
+
+}
+
+#pageActionButton,
+#pocket-button,
+#star-button,
+#urlbar-go-button,
+#pageActionSeparator,
+.tabs-newtab-button,
+[uidensity="compact"]:root .urlbar-icon,
+.tabbrowser-tab > .tab-stack > .tab-content > .tab-icon-image {
+    display: none !important;
+}
+
+#urlbar {
+    border-color: #D4D4D4 !important;
+    border-width: 1px !important;
+    height: 28px !important;
+    border-radius: 4px !important;
+}
+
+
+#urlbar[focused="true"],
+.searchbar-textbox[focused="true"] {
+    box-shadow: none !important;
+    border-color:  #7CA9D7 !important;
+}
+
+#identity-icon,
+.desktop-notification-icon,
+#urlbar[pageproxystate="valid"] > #identity-box.verifiedDomain > #connection-icon, #urlbar[pageproxystate="valid"] > #identity-box.verifiedIdentity > #connection-icon,
+#urlbar[pageproxystate="valid"] > #identity-box.mixedActiveBlocked > #connection-icon {
+    width: 14px !important;
+    height: 14px !important;
+}
+
+#urlbar[pageproxystate="valid"] > #identity-box.verifiedDomain > #connection-icon, #urlbar[pageproxystate="valid"] > #identity-box.verifiedIdentity > #connection-icon,
+#urlbar[pageproxystate="valid"] > #identity-box.mixedActiveBlocked > #connection-icon {
+    fill: #177F45 !important;
+}
+
+.toolbarbutton-icon {
+    width: calc(2 * var(--toolbarbutton-inner-padding) + 14px);
+    height: calc(2 * var(--toolbarbutton-inner-padding) + 14px);
+}
+
+findbar {
+    border-top: 1px solid #DDD !important;
+}
+
+findbar .toolbarbutton-icon {
+    width: calc(2 * var(--toolbarbutton-inner-padding));
+    height: calc(2 * var(--toolbarbutton-inner-padding) + 6px);
+}
+
+.findbar-textbox,
+.findbar-find-previous,
+.findbar-find-next {
+    border-width: 1px !important;
+    border-color: #D4D4D4 !important;
+}
+
+.findbar-textbox[focused="true"] {
+    box-shadow: none !important;
+    border-color:  #7CA9D7 !important;
+}
+
+#nav-bar {
+    padding: 2px 0 3px;
+}
+
+#nav-bar,
+.tabbrowser-tab {
+    --tabs-border-color: #B5B6B6 !important;
+}
+
+.titlebar-placeholder[type="pre-tabs"],
+.titlebar-placeholder[type="post-tabs"] {
+	width: 20px !important;
+}
+
+.tab-text.tab-label {
+    font-size: 12px !important;
+}
+
+.tab-close-button {
+    width: 18px !important;
+    height 18px !important;
+}
+
+:root:-moz-lwtheme {
+    --tab-line-color: transparent !important;
+}
+
+
+.autocomplete-richlistitem {
+    min-height: 25px !important;
+    height: 25px !important;
+}
+
+.autocomplete-richlistitem[selected="true"] {
+    background-color: #EBEBEB !important;
+    color: inherit !important;
+}
+
+#PopupAutoCompleteRichResult {
+    box-shadow: none !important;
+    --focus-ring-box-shadow: none !important;
+}
+
+.ac-type-icon, .ac-site-icon {
+    width: 12px !important;
+    height: 12px !important;
+    opacity: .5 !important;
+}
+
+#PanelUI-button {
+    height: 30px !important;
+    max-height: 30px !important;
+}
+
+panel[type="autocomplete"], panel[type="autocomplete-richlistbox"], .autocomplete-history-popup {
+    box-shadow: 0 !important;
+    --focus-ring-box-shadow: 0 !important;
+}
+
+#PopupAutoCompleteRichResult, #PopupSearchAutoComplete, #PopupAutoComplete {
+    box-shadow: 0 !important;
+    --focus-ring-box-shadow: 0 !important;
+}
+
+#PopupAutoCompleteRichResult .autocomplete-richlistbox {
+    padding: 4px 0px !important;
+}
+
+.autocomplete-richlistitem {
+    border-radius: 0 !important;
+}
+
+.autocomplete-richlistitem .ac-title {
+    color: #396DD0 !important;
+}
+
+.autocomplete-richlistitem .ac-url {
+    color: #646464 !important;
+}
+
+

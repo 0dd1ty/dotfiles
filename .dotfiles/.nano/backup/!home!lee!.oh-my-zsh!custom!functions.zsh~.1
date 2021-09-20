@@ -1,0 +1,86 @@
+setKeyboardLight () {
+    dbus-send --system --type=method_call  --dest="org.freedesktop.UPower" "/org/freedesktop/UPower/KbdBacklight" "org.freedesktop.UPower.KbdBacklight.SetBrightness" int32:$1 
+}
+
+### FUNCTIONS
+
+cdl() {builtin cd $@; ls }
+
+# Easy extract
+extract () {
+  if [ -f $1 ] ; then
+      case $1 in
+            *.tar.bz2)      tar xvjf $1   ;;
+            *.tar.gz)       tar xvzf $1   ;;
+	    *.tar.xz)       tar xvJf $1   ;;
+            *.bz2)          bunzip2 $1    ;;
+            *.rar)          unrar x $1    ;;
+            *.gz)           gunzip $1     ;;
+            *.tar)          tar xvf $1    ;;
+            *.tbz2)         tar xvjf $1   ;;
+            *.tgz)          tar xvzf $1   ;;
+	    *.txz)          tar xvJf $1   ;;
+            *.rar)          unrar $1      ;;
+            *.zip)          unzip $1      ;;
+            *.Z)            uncompress $1 ;;
+            *.7z)           7z e $1       ;;
+          *)           echo "don't know how to extract '$1'..." ;;
+      esac
+  else
+      echo "'$1' is not a valid file!"
+  fi
+}
+
+## Adding and removing aliases
+rmalias() 
+{
+	unalias $1 && sed -i "/alias $1\=/d" ~/.zshrc.d/aliases
+}
+        
+mkalias() 
+{
+	echo -e "\n# added `date "+%F %T"`" >>  ${HOME}/.zshrc.d/aliases
+	echo "alias $@" >> ${HOME}/.zshrc.d/aliases
+	alias $@
+}
+# Get weather (replace YOURZIPCODEHERE in the url with your own zipcode, call it by typing weather)
+ weather ()
+ {
+ declare -a WEATHERARRAY
+ WEATHERARRAY=( `elinks -dump "http://www.google.com/search?hl=en&lr=&client=firefox-a&rls=org.mozilla%3Aen-US%3Aofficial&q=weather+YOURZIPCODEHERE&btnG=Search" | grep -A 5 -m 1 "Weather for" | grep -v "Add to "`)
+ echo ${WEATHERARRAY[@]}
+ }
+# Makes directory then moves into it
+function mkcdr {
+    mkdir -p -v $1
+    cd $1
+}
+
+# Creates an archive from given directory
+mktar() { tar cvf  "${1%%/}.tar"     "${1%%/}/"; }
+mktgz() { tar cvzf "${1%%/}.tar.gz"  "${1%%/}/"; }
+mktbz() { tar cvjf "${1%%/}.tar.bz2" "${1%%/}/"; }
+
+upinfo ()
+{
+echo -ne "\t ";uptime | awk /'up/ {print $3,$4,$5,$6,$7,$8,$9,$10}'
+}
+
+# list files only
+lf () { ls -1p $@ | grep -v '\/$' }
+
+
+# define words with wordnet
+ddefine () { curl dict://dict.org/d:${1}:wn; }
+
+editZsh(){
+    nano ~/.zshrc
+    #source ~/.zshrc
+    sourceZsh
+    echo "New .zshrc sourced."
+}
+
+sourceZsh(){
+    source ~/.zshrc
+    echo "New .zshrc sourced."
+}

@@ -1,0 +1,2 @@
+#!/bin/sh
+cp ~/.config/termite/config.i3 ~/.config/termite/config

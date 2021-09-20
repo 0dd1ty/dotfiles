@@ -1,0 +1,15 @@
+#echo $(echo /home/hrodr/Music/$(mpc current -f %file%)|sed 's_\(.*\)/\(.*\)/\(.*\)_\1/\2/_')
+#ART=$(echo /home/hrodr/Music/$(mpc current -f %file%)|sed 's_\(.*\)/\(.*\)/\(.*\)_\1/\2/_')
+SHOWN=0
+while true; do
+echo check
+if [ "$(cat /home/hrodr/current_music)" != "$SHOWN" ]; then
+pkill feh;
+echo killed feh
+feh -Z -g 100x100+1500+30 -^ art "$(cat /home/hrodr/current_music)" &
+SHOWN=$(cat /home/hrodr/current_music)
+fi
+echo sleeping
+sleep 5s;
+echo slept
+done

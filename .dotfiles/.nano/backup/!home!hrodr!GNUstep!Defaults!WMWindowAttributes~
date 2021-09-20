@@ -1,0 +1,12 @@
+{
+  termite.Termite = {
+    NoTitlebar = Yes;
+    NoBorder = Yes;
+    AlwaysUserIcon = No;
+    NoResizebar = Yes;
+  };
+  "google-chrome.Google-chrome" = {
+    NoTitlebar = Yes;
+    AlwaysUserIcon = No;
+  };
+}

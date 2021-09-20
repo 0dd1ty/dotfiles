@@ -1,0 +1,20 @@
+Lägg till sist i gnome-shell.css för att skriva över switcher så att skrivbordet inte tonas ner...
+
+
+/* ********************************** */
+  /*	[alt+esc switcher tweak]	*/
+
+.switcher-popup {
+  box-shadow: none;
+  background-color: rgba(35, 35, 35, 0.0);
+  background-image: none;
+  background-repeat: repeat; }
+
+.switcher-list {
+  box-shadow: 0 0 5px 2px rgba(0,0,0,.5);
+  background-color: rgba(35, 35, 35, 0.8);
+  /*background-image: url("common-assets/misc/noise5.png");*/
+  background-repeat: repeat;
+  border-radius: 20px;
+  }			
+  /* ********************************** */

@@ -1,0 +1,2 @@
+#!/bin/sh
+google-chrome-stable --app=https://prime.amazon.com --new-window

@@ -1,0 +1,44 @@
+conky.config = {
+	double_buffer = true,
+	draw_borders = false,
+	draw_graph_borders = false,
+	own_window_class = 'conky',
+	own_window = true,
+	own_window_type = 'desktop',
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+	own_window_argb_visual = true,
+	border_margin = '3',
+	draw_shades = false,-- sombra al texto
+	gap_x = 5,
+	gap_y = 5,
+	mpd_host = 'localhost',
+	mpd_port = 6600,
+	alignment = 'bottom_left',
+	update_interval = 1,
+	default_color = '#ffffff',
+	use_xft = true,
+--font snap-7
+	font = 'envy code r:size=9',
+	xftalpha = 1,
+	text_buffer_size = 2048,
+	override_utf8_locale = true,
+	use_spacer = 'none',
+	minimum_width = 1355, minimum_height = 0,
+	own_window_argb_value = 153,
+	own_window_transparent = false,
+	own_window_colour = '#222222',
+};
+
+conky.text = [[
+${color d1d1d1}Fecha:${color} ${time %a, %d/%b/%y} \
+${color d1d1d1}Hora:${color} ${time %H:%M } | \
+${color d1d1d1}Cancion:${color} ${mpd_artist} - ${mpd_title} | \
+${color d1d1d1}Kernel${color}: ${kernel} | \
+${color d1d1d1}Cpu:${color} ${cpu}%${color}${font}  \
+${color d1d1d1}Ram:${color} ${memperc}%${color}${font}  \
+${color d1d1d1}Swap:${color} ${swapperc}%${color}${font}  |  \
+${color d1d1d1}Hdd:${color} ${fs_used_perc /}% ${fs_used /} - ${fs_size /}${color}  |  \
+${color d1d1d1}Libre:${color} ${fs_free /}${color}${font} \
+${alignr}Sergio Fredes
+#
+#Por si quieres agregar mas http://conky.sourceforge.net/docs.html]];

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if ! urxvtc "$@"
+  urxvtd -q -o -f
+  urxvtc "$@"
+then
+echo "done son."
+fi

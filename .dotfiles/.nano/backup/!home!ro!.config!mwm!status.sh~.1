@@ -1,0 +1,12 @@
+#!/bin/sh
+#mwm status.sh example file
+TIMING=5
+statustext()
+{
+	mwm -c status "default `date`     `acpi`     $(mpc | grep -)"
+}
+while true;
+do
+	statustext
+	sleep $TIMING
+done

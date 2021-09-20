@@ -1,0 +1,24 @@
+[server_location]
+address = localhost
+port_server = 10000
+port_vid_gen_server = 11000
+
+[reddit]
+client_id = wr3tched 
+client_secret = Qyef_MT_drbBQZSIv-a-eV8wCNbz5w
+password = 14ts3IF@
+user_agent = RedditDATA
+username = DoctorCreepy
+reddit_minimum_comments = 1000
+reddit_comments_per_post = 30
+reddit_replies_per_comment = 4
+reddit_amount_posts = 45
+
+[database]
+host =wr3tch.com
+user =ro
+password =!qif?=Xd1
+
+[videos]
+musictypes = Funny, Sad, Soothing
+

@@ -1,0 +1,149 @@
+#include </home/ro/.termcolors/synthwave>
+
+
+!!rofi.location:          0
+!rofi.color-enabled:     true
+!!                       'background', 'border'
+!rofi.color-window:      argb:dc111111, argb:dc111111
+!! State:                'bg',          'fg',   'bgalt',       'hlbg',        'hlfg'
+!rofi.color-normal:      argb:00333333, #ffffff, argb:00333333, argb:00333333, argb:ffefa211
+!rofi.color-urgent:      argb:00333333, #ffffff, argb:00333333, argb:00333333, argb:ffefa211
+!rofi.color-active:      argb:00333333, #ffffff, argb:00333333, argb:00333333, argb:ffefa211
+!rofi.separator-style:   dash
+!rofi.fullscreen:        true
+!rofi.padding:           130
+!rofi.hide-scrollbar:    true
+!rofi.line-margin:       5
+!rofi.fake-transparency: false
+!rofi.yoffset:           0
+!rofi.xoffset:           0
+!rofi.width:             1366
+!rofi.opacity:           90
+!rofi.font:              sundae 10
+
+! Rofi
+rofi.font: sundae 10
+rofi.padding: 10x
+rofi.line-padding: 1
+rofi.borderwidth: 1
+rofi.color-enabled: true
+rofi.hide-scrollbar: true
+rofi.separator-style: solid
+rofi.color-window: #1a1e21, #FF254F, #1a1e21
+rofi.color-normal: #1a1e21, #f5f5f5, #1a1e21, #1a1e21, #FF254F
+rofi.color-urgent: argb:00f5f5f5, #f43753, argb:00f5f5f5, argb:00f5f5f5, #FF254F
+rofi.color-active: argb:00f5f5f5, #49bbfb, argb:00f5f5f5, argb:00f5f5f5, #FF254F
+*.font:	sundae:pixelsize=10:antialias=true:autohint=true;
+*.alpha: 0.9
+! Desktop
+Xft.antialias: 1
+Xft.hinting: true
+Xft.hintstyle: hintfull
+Xft.dpi: 100
+Xft.rgba: rgb
+Xft.lcdfilter: lcddefault
+Xcursor.size: 8
+Xft.autohint: 1
+
+! Set the font
+URxvt*cursorBlink: true
+URxvt*buffered: true
+URxvt.font: xft:sundae:size=10:antialias=true
+URxvt.boldFont: xft:sundae:size=10
+URxvt.letterSpace: 1
+
+! Disable scrollbar
+URxvt.scrollBar: false
+
+! Set terminal padding
+URxvt.internalBorder: 20
+
+! Enables copy/paste with Ctrl-Shift-C/V
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+URxvt.perl-ext-common: default,clipboard,tabbedex,confirm-paste,url-select
+URxvt.keysym.Shift-Control-C: perl:clipboard:copy
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.tabbedex.tabbar-fg: 4
+URxvt.tabbedex.tabbar-bg: 16
+URxvt.tabbedex.tab-fg:    15
+URxvt.tabbedex.tab-bg:    4
+URxvt.underlineURLs:     true
+
+! Colors
+*background:   bg
+*foreground:   fg
+*cursorColor:  cyn
+
+*color0:      blk
+*color8:      bblk
+*color1:      red
+*color9:      red
+*color2:      grn
+*color10:     grn
+*color3:      ylw
+*color11:     ylw
+*color4:      blu
+*color12:     blu
+*color5:      mag
+*color13:     mag
+*color6:      cyn
+*color14:     cyn
+*color7:      wht
+*color15:     wht
+
+!*background:  #000b1e
+!*foreground:  #0abdc6
+!*color0:  #123e7c
+!*color1:  #ff0000
+!*color2:  #d300c4
+!*color3:  #f57800
+!*color4:  #123e7c
+!*color5:  #711c91
+!*color6:  #0abdc6
+!*color7:  #d7d7d5
+!*color8:  #1c61c2
+!*color9:  #ff0000
+!*color10:  #d300c4
+!*color11:  #f57800
+!*color12:  #00ff00
+!*color13:  #711c91
+!*color14:  #0abdc6
+!*color15:  #d7d7d5
+
+! special
+!*.foreground:   #ffffff
+!*.background:   #051519
+*.cursorColor:  #ffffff
+
+! black
+!*.color0:       #191919
+!*.color8:       #575757
+
+! red
+!*.color1:       #001122
+!*.color9:       #002446
+
+! green
+!*.color2:       #223344
+!*.color10:      #384a5b
+
+! yellow
+!*.color3:       #556677
+!*.color11:      #74818e
+
+! blue
+!*.color4:       #113322
+!*.color12:      #1e4130
+
+! magenta
+!*.color5:       #446655
+!*.color13:      #5e7f6e
+
+! cyan
+!*.color6:       #5e8d87
+!*.color14:      #86a8a4
+
+! white
+!*.color7:       #b7b7b7
+!*.color15:      #ffffff

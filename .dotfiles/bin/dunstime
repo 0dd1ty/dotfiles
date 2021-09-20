@@ -1,0 +1,5 @@
+#!/bin/bash
+
+text="The time is currently: $(date +%H:%M)"
+title="$(date +%d). $(date +%B) $(date +%Y), $(date +%A)"
+notify-send -i "$title" "$text"

@@ -1,0 +1,5 @@
+#!/bin/sh
+xset +p ~/.fonts/misc &
+urxvtd -q -o -f &
+xrdb -l ~/.Xresources &
+notify-send "Startup script launched."

@@ -1,0 +1,266 @@
+#======================================================================#
+# .bashrc
+# bash shell configuration
+#
+#  fsckoff@wr3tch.com
+#======================================================================#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+#----------------------------------------------------------------------#
+# Aliases file
+#----------------------------------------------------------------------#
+if [ -f ~/.bash_aliases ]; then
+    source ~/.bash_aliases
+fi
+#----------------------------------------------------------------------#
+# Completion
+#----------------------------------------------------------------------#
+if [ -f /etc/bash_completion ]; then
+    source /etc/bash_completion
+fi
+#----------------------------------------------------------------------#
+# Functions
+#----------------------------------------------------------------------#
+if [ -f ~/.bash_functions ]; then
+    source ~/.bash_functions
+fi
+#----------------------------------------------------------------------#
+# Colors
+#----------------------------------------------------------------------#
+if [ -f ~/.bash_colors ]; then
+    source ~/.bash_colors
+fi
+#----------------------------------------------------------------------#
+# environment variables
+#----------------------------------------------------------------------#
+# env  
+export PAGER=less
+export PATH="$PATH:/usr/local/bin;/usr/bin/jre1.6.0_30/bin"
+#AndroidDev PATH
+export PATH="${PATH}:/opt/"
+export PATH="${PATH}:/usr/lib/x86_64-linux-gnu"
+export LANG="en_US.UTF-8"
+export LC_CTYPE="en_US.UTF-8"
+#----------------------------------------------------------------------#
+# Prompt
+#----------------------------------------------------------------------#
+
+# Colores a utilizar
+COLV="\[\033[0;32m\]" # green
+COLC="\[\033[0;36m\]" # cyan
+COLA="\[\033[0;33m\]" # yellow
+COLB="\[\033[0;34m\]" # blue
+COLP="\[\033[0;35m\]" # purple
+COLR="\[\033[0;31m\]" # red
+COLN="\[\033[0m\]"    # reset
+
+# 
+COL="$COLC"						#  normal user
+[[ "$UID" = "0" ]] && COL=$COLR	# red for root
+
+# add return and change title to current PS1
+function __promptadd
+{
+	XTITLE='\[\e]0;\s (\w)\a\]'
+    PS1="$XTITLE$PS1\n$COL \\$ $COLN"
+}
+
+# Prompt a traves de promptline.vim
+# Es un plugin de VIM para crear un prompt con simbolos powerline.
+# Entrar en vim y hacer un :PromptlineSnapShot ~/.shell_prompt.sh
+function prompt_line
+{
+    source ~/.shell_prompt.sh
+    PROMPT_COMMAND="$PROMPT_COMMAND __promptadd;"
+}
+
+# Prompt "normal" sin carácteres raros
+function prompt_term
+{
+	# Opciones para el git
+    GIT_PS1_SHOWDIRTYSTATE=1
+    GIT_PS1_SHOWSTASHSTATE=1
+    GIT_PS1_SHOWUNTRACKEDFILES=1
+    GIT_PS1_SHOWUPSTREAM="auto"
+
+    # Prompt final
+	PROMPT_COMMAND=""
+    PS1="$COLV--[$COLC\h$COLV]-[$COLA\w$COLV]\$(__git_ps1)\n$COL \\$ $COLN"
+}
+
+# Selección de prompt según el tipo de terminal
+case "$COLORTERM" in
+  rxvt*)
+	  prompt_line
+    ;;
+  *)
+	  prompt_term
+    ;;
+esac
+
+
+#----------------------------------------------------------------------#
+# Colores
+#----------------------------------------------------------------------#
+
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+	export LS_OPTIONS='--color=auto'
+	alias l='ls $LS_OPTIONS'
+	alias ll='ls $LS_OPTIONS -l -N -F'
+	alias ls='ls $LS_OPTIONS -A -N -hF'
+fi
+
+export GREP_COLOR="1;31"
+
+#----------------------------------------------------------------------#
+# PATH
+#----------------------------------------------------------------------#
+export PATH="$PATH:$HOME/bin"
+
+#----------------------------------------------------------------------#
+# Variables variadas
+#----------------------------------------------------------------------#
+
+# Por defecto.
+export EDITOR="vim"
+export BROWSER="firefox"
+
+## FUNCTIONS
+
+#cdl() {builtin cd $@; ls }
+
+# Easy extract
+extract () {
+  if [ -f $1 ] ; then
+      case $1 in
+          *.tar.bz2)   tar xvjf $1    ;;
+          *.tar.gz)    tar xvzf $1    ;;
+          *.bz2)       bunzip2 $1     ;;
+          *.rar)       rar x $1       ;;
+          *.gz)        gunzip $1      ;;
+          *.tar)       tar xvf $1     ;;
+          *.tbz2)      tar xvjf $1    ;;
+          *.tgz)       tar xvzf $1    ;;
+          *.zip)       unzip $1       ;;
+          *.Z)         uncompress $1  ;;
+          *.7z)        7z x $1        ;;
+          *)           echo "don't know how to extract '$1'..." ;;
+      esac
+  else
+      echo "'$1' is not a valid file!"
+  fi
+}
+# Makes directory then moves into it
+#function mkcdr {
+#    mkdir -p -v $1
+#    cd $1
+#}
+
+# Creates an archive from given directory
+mktar() { tar cvf  "${1%%/}.tar"     "${1%%/}/"; }
+mktgz() { tar cvzf "${1%%/}.tar.gz"  "${1%%/}/"; }
+mktbz() { tar cvjf "${1%%/}.tar.bz2" "${1%%/}/"; }
+
+upinfo ()
+{
+echo -ne "\t ";uptime | awk /'up/ {print $3,$4,$5,$6,$7,$8,$9,$10}'
+}
+
+# list files only
+lf () { ls -1p $@ | grep -v '\/$' }
+
+
+# define words with wordnet
+ddefine () { curl dict://dict.org/d:${1}:wn; }
+
+
+#----------------------------------------------------------------------#
+# Alias
+#----------------------------------------------------------------------#
+
+# Alias contra borrados accidentales.
+#alias rm='rm -i'
+#alias cp='cp -i'
+#alias mv='mv -i'
+
+# Alias de limpieza
+alias texclean='rm -f *.toc *.aux *.log *.cp *.fn *.tp *.vr *.pg *.ky'
+alias clean='echo -n "¿Desea borrar todos los ficheros temporales (s/N)? ";
+	read si;
+	if test "$si" = "y" -o "$si" = "s" ; then
+    rm -f \#* *~ .*~ *.bak .*.bak  *.tmp .*.tmp core a.out;
+    echo "Hecho.";
+	else
+    echo "Cancelado.";
+	fi'
+
+
+#----------------------------------------------------------------------#
+# OTROS
+#----------------------------------------------------------------------#
+
+# Auto-completion
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    source /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    source /etc/bash_completion
+  fi
+fi
+
+# Man coloreador - hay que instalar less
+man() {
+	env \
+		LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+		LESS_TERMCAP_md=$(printf "\e[1;31m") \
+		LESS_TERMCAP_me=$(printf "\e[0m") \
+		LESS_TERMCAP_se=$(printf "\e[0m") \
+		LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+		LESS_TERMCAP_ue=$(printf "\e[0m") \
+		LESS_TERMCAP_us=$(printf "\e[1;32m") \
+		man "$@"
+}
+
+# Para que a los VT100 no se les fastidie el terminal con los colores
+if [ $TERM = vt100 ]; then
+        alias ls='ls -F --color=never';
+fi
+
+#----------------------------------------------------------------------#
+# MI LOGO
+#----------------------------------------------------------------------#
+
+#case "$TERM" in
+#xterm*|rxvt*)
+#  if [ -f $HOME/bin/archey ]; then $HOME/bin/archey ; fi
+#	;;
+#*)
+#	;;
+#esac
+
+#----------------------------------------------------------------------#
+# SSH KEY
+#----------------------------------------------------------------------#
+
+# Init ssg-agent if not exist
+#if [ -z "$SSH_AUTH_SOCK" ] ; then
+#  eval `ssh-agent -s`
+#fi
+
+# attempt to connect to a running agent, sharing over sessions (putty)
+check-ssh-agent() {
+    [ -S "$SSH_AUTH_SOCK" ] && { ssh-add -l >& /dev/null || [ $? -ne 2 ]; }
+}
+
+check-ssh-agent || export SSH_AUTH_SOCK=/tmp/ssh-agent.sock_$USER
+check-ssh-agent || eval "$(ssh-agent -s -a /tmp/ssh-agent.sock_$USER)" > /dev/null
+
+#Add identities if not exist
+if [[ -n $(ssh-add -l | grep 'The agent has no identities') ]] ; then
+  ssh-add 2> /dev/null
+fi
+
+

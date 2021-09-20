@@ -1,0 +1,2 @@
+#!/bin/sh
+termite -c ~/.config/termite/config.reflect

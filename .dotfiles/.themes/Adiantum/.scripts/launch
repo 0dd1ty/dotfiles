@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# Just a wrapper script to launch rofi
+
+# Set accent colours
+if [[ $1 = "--red" ]]; then
+    ACCENT='#e46c6d'
+elif [[ $1 = "--green" ]]; then
+    ACCENT='#aecdad'
+elif [[ $1 = "--yellow" ]]; then
+    ACCENT='#d8af60'
+elif [[ $1 = "--blue" ]]; then
+    ACCENT='#819fc1'
+elif [[ $1 = "--magenta" ]]; then
+    ACCENT='#b899a8'
+elif [[ $1 = "--cyan" ]]; then
+    ACCENT='#68c7c1'
+else
+    ACCENT='#e46c6d'
+fi
+
+rofi -show drun -sidebar-mode \
+-modi run,drun,window \
+-hide-scrollbar true \
+-bw 2 \
+-lines 12 \
+-padding 24 \
+-width 60 \
+-location 0 \
+-columns 3 \
+-font "cinnamonroll 10" \
+-color-enabled true \
+-color-window "#f9faf4,#f9faf4,#f9faf4" \
+-color-normal "#f9faf4,#93a1a1,#f9faf4,#f9faf4,$ACCENT" \
+-color-active "#f9faf4,#b899a8,#f9faf4,#f9faf4,$ACCENT" \
+-color-urgent "#f9faf4,#d8af60,#f9faf4,#f9faf4,$ACCENT"

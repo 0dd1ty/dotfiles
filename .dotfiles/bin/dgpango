@@ -1,0 +1,2 @@
+#!/bin/sh
+sudo dnf downgrade -y --releasever 30 pango-1.43.0-4.fc30.x86_64

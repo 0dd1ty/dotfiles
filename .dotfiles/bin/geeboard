@@ -1,0 +1,2 @@
+#!/bin/sh
+google-chrome-stable --app=https://4channel.org/g --new-window

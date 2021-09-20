@@ -1,0 +1,9 @@
+#!/bin/bash
+
+## Screenshot script to upload to wr3tch-pomf after neofetch and scrot
+file_name=tempfile.png
+current_time=$(date "+%Y.%m.%d-%H.%M.%S")
+new_fileName=$file_name.$current_time.png
+neofetch; read -p "Press [ENTER] to continue..."
+scrot -cd10 tempfile.png
+cp $file_name $new_fileName; read -p "Screenshot is appended with timestamp in current directory."

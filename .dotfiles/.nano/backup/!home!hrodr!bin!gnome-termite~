@@ -1,0 +1,2 @@
+#!/bin/sh
+mv ~/.config/termite/config.gnome ~/.config/termite/config

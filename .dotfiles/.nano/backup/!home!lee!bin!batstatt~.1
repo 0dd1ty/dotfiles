@@ -1,0 +1,5 @@
+#!/bin/sh
+BAT_STATUS="/sys/class/power_supply/BAT0/status
+BAT_CAP="/sys/class/power_supply/BAT0/capacity
+
+echo "Your battery is" $[cat $BAT_STATUS]  "at" $[cat $BAT_CAP];;

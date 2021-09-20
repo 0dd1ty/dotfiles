@@ -1,0 +1,6 @@
+#!/bin/bash
+
+text="$(date +%H:%M)"
+title="$(date +%d). $(date +%B) $(date +%Y), $(date +%A)"
+
+notify-send -i "$title" "$text"

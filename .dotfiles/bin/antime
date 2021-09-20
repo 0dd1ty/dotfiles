@@ -1,0 +1,9 @@
+#!/bin/sh
+#notify-send "Current Time" (date)
+#!/bin/bash
+
+icon="/path/to/icon/file.png"
+title="$(date +%H:%M)"
+text="$(date +%d). $(date +%B) $(date +%Y), $(date +%A)"
+
+notify-send -i $icon "$title" "$text"

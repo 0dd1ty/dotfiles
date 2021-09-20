@@ -1,0 +1,3 @@
+#alias {connect} {#ses MARS_testbed wr3tch.com 2001;yes;Praesius;killa}
+#macro {\e[11~} {connect}
+#macro {\eOP} {connect}

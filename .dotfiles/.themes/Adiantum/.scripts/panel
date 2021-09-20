@@ -1,0 +1,128 @@
+#!/bin/bash
+
+# Set the colors
+BACKGROUND='#f9faf4'
+FOREGROUND='#947e7b'
+ACCENT='#e46c6d'
+SOFTACCENT='#aecdad'
+DISACCENT='#e6e4e5'
+
+[ -e "/tmp/panel-fifo" ] && rm "/tmp/panel-fifo"
+mkfifo "/tmp/panel-fifo"
+i3status > "/tmp/panel-fifo" &
+
+statusline() {
+while read -r line ; do
+	case $line in
+		A*) wifi=" %{F$ACCENT} WIFI %{F-}%{A:wicd-gtk --no-tray &:}${line#?} %{A}";;
+		B*) charger=" %{F$DISACCENT} ${line#?} %{F-} ";;
+		C*) battery="${line#?}";;
+		D*) speaker=" %{F$ACCENT}${line#?}%{F-} ";;
+		E*) volume="${line#?}";;
+		F*) temp=" %{F$ACCENT} TEMP%{F-} ${line#?} ";;
+		G*) load=" %{F$ACCENT} CPU%{F-} %{A:urxvt -hold -e htop &:}${line#?} %{A} ";;
+		H*) clock="${line#?}";;
+	esac
+
+	energy=$(echo "$battery" | tr -d '%') # Battery without percent
+
+	# Hardcoded the amount of hearts because I don't know about programming
+	if ((0<=energy && energy<=5)); then
+		hearts="%{F$SOFTACCENT} %{F$DISACCENT}         %{F-} "
+	elif ((6<=energy && energy<=10)); then
+		hearts="%{F$ACCENT} %{F$DISACCENT}         %{F-} "
+	elif ((11<=energy && energy<=15)); then
+		hearts="%{F$ACCENT} %{F$SOFTACCENT} %{F$DISACCENT}        %{F-} "
+	elif ((16<=energy && energy<=20)); then
+		hearts="%{F$ACCENT}  %{F$DISACCENT}        %{F-} "
+	elif ((21<=energy && energy<=25)); then
+		hearts="%{F$ACCENT}  %{F$SOFTACCENT} %{F$DISACCENT}       %{F-} "
+	elif ((26<=energy && energy<=30)); then
+		hearts="%{F$ACCENT}   %{F$DISACCENT}       %{F-} "
+	elif ((31<=energy && energy<=35)); then
+		hearts="%{F$ACCENT}   %{F$SOFTACCENT} %{F$DISACCENT}      %{F-} "
+	elif ((36<=energy && energy<=40)); then
+		hearts="%{F$ACCENT}    %{F$DISACCENT}      %{F-} "
+	elif ((41<=energy && energy<=45)); then
+		hearts="%{F$ACCENT}    %{F$SOFTACCENT} %{F$DISACCENT}     %{F-} "
+	elif ((46<=energy && energy<=50)); then
+		hearts="%{F$ACCENT}     %{F$DISACCENT}     %{F-} "
+	elif ((51<=energy && energy<=55)); then
+		hearts="%{F$ACCENT}     %{F$SOFTACCENT} %{F$DISACCENT}    %{F-} "
+	elif ((56<=energy && energy<=60)); then
+		hearts="%{F$ACCENT}      %{F$DISACCENT}    %{F-} "
+	elif ((61<=energy && energy<=65)); then
+		hearts="%{F$ACCENT}      %{F$SOFTACCENT} %{F$DISACCENT}   %{F-} "
+	elif ((66<=energy && energy<=70)); then
+		hearts="%{F$ACCENT}       %{F$DISACCENT}   %{F-} "
+	elif ((71<=energy && energy<=75)); then
+		hearts="%{F$ACCENT}       %{F$SOFTACCENT} %{F$DISACCENT}  %{F-} "
+	elif ((76<=energy && energy<=80)); then
+		hearts="%{F$ACCENT}        %{F$DISACCENT}  %{F-} "
+	elif ((81<=energy && energy<=85)); then
+		hearts="%{F$ACCENT}        %{F$SOFTACCENT} %{F$DISACCENT} %{F-} "
+	elif ((86<=energy && energy<=90)); then
+		hearts="%{F$ACCENT}         %{F$DISACCENT} %{F-} "
+	elif ((91<=energy && energy<=95)); then
+		hearts="%{F$ACCENT}         %{F$SOFTACCENT} %{F-} "
+	elif ((96<=energy && energy<=100)); then
+		hearts="%{F$ACCENT}          %{F-} "
+	fi
+	
+	loudness=$(echo "$volume" | tr -d '%') # Volume without percent
+
+	# The volume bar was also harcoded
+	if ((0<=loudness && loudness<=5)); then
+		soundbar="%{F$SOFTACCENT}%{F$DISACCENT}%{F-} "
+	elif ((6<=loudness && loudness<=10)); then
+		soundbar="%{F$ACCENT}%{F$DISACCENT}%{F-} "
+	elif ((11<=loudness && loudness<=15)); then
+		soundbar="%{F$ACCENT}%{F$SOFTACCENT}%{F$DISACCENT}%{F-} "
+	elif ((16<=loudness && loudness<=20)); then
+		soundbar="%{F$ACCENT}%{F$DISACCENT}%{F-} "
+	elif ((21<=loudness && loudness<=25)); then
+		soundbar="%{F$ACCENT}%{F$SOFTACCENT}%{F$DISACCENT}%{F-} "
+	elif ((26<=loudness && loudness<=30)); then
+		soundbar="%{F$ACCENT}%{F$DISACCENT}%{F-} "
+	elif ((31<=loudness && loudness<=35)); then
+		soundbar="%{F$ACCENT}%{F$SOFTACCENT}%{F$DISACCENT}%{F-} "
+	elif ((36<=loudness && loudness<=40)); then
+		soundbar="%{F$ACCENT}%{F$DISACCENT}%{F-} "
+	elif ((41<=loudness && loudness<=45)); then
+		soundbar="%{F$ACCENT}%{F$SOFTACCENT}%{F$DISACCENT}%{F-} "
+	elif ((46<=loudness && loudness<=50)); then
+		soundbar="%{F$ACCENT}%{F$DISACCENT}%{F-} "
+	elif ((51<=loudness && loudness<=55)); then
+		soundbar="%{F$ACCENT}%{F$SOFTACCENT}%{F$DISACCENT}%{F-} "
+	elif ((56<=loudness && loudness<=60)); then
+		soundbar="%{F$ACCENT}%{F$DISACCENT}%{F-} "
+	elif ((61<=loudness && loudness<=65)); then
+		soundbar="%{F$ACCENT}%{F$SOFTACCENT}%{F$DISACCENT}%{F-} "
+	elif ((66<=loudness && loudness<=70)); then
+		soundbar="%{F$ACCENT}%{F$DISACCENT}%{F-} "
+	elif ((71<=loudness && loudness<=75)); then
+		soundbar="%{F$ACCENT}%{F$SOFTACCENT}%{F$DISACCENT}%{F-} "
+	elif ((76<=loudness && loudness<=80)); then
+		soundbar="%{F$ACCENT}%{F$DISACCENT}%{F-} "
+	elif ((81<=loudness && loudness<=85)); then
+		soundbar="%{F$ACCENT}%{F$SOFTACCENT}%{F$DISACCENT}%{F-} "
+	elif ((86<=loudness && loudness<=90)); then
+		soundbar="%{F$ACCENT}%{F$DISACCENT}%{F-} "
+	elif ((91<=loudness && loudness<=95)); then
+		soundbar="%{F$ACCENT}%{F$SOFTACCENT}%{F-} "
+	elif ((96<=loudness && loudness<=100)); then
+		soundbar="%{F$ACCENT}%{F-} "
+	fi
+
+	soundcontrol="%{A4:pulsevol --up:}%{A5:pulsevol --down:}%{A:pavucontrol &:}\
+$speaker $soundbar%{A}%{A}%{A}"
+
+	printf "%s\n" " %{l} ${soundcontrol} ${wifi} ${temp} ${load}\
+%{c}${clock}%{r}${charger}${hearts} "
+done
+}
+
+statusline < "/tmp/panel-fifo" | lemonbar -g x28 \
+-f -*-cinnamonroll-* -f -*-waffle-* \
+-B $BACKGROUND -F $FOREGROUND | dash 
+
